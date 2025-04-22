@@ -62,7 +62,10 @@ mapleBaconBar.toppings.push("pecans"); // because toppings is an array
 console.log(mapleBaconBar); // now all three toppings show up
 
 // TODO: What's your favorite type of unbelievably fattening, sugary deliciousness?
-
+let chocolateDonut = new Donut("cake", "sphere", false);
+chocolateDonut.toppings = ["chocolate chips", "M&M's"];
+chocolateDonut.filling = "milk chocolate";
+console.log(chocolateDonut)
 
 
 /**** OPTIONAL PARAMETERS ****/
@@ -99,7 +102,11 @@ console.log(mansionOnMainStreet);
 
 
 // TODO: Pretend you're a realtor. Create 3-4 more houses, some with and some without optional parameters
+let aptOnPuttingtonDrive = new HouseForSale("single-family", 1972, 150000, 865, 2, 1, false, true);
+console.log(mansionOnMainStreet);
 
+let cityBungalow = new HouseForSale("single family", 1922, 198730, 1300, 2, 1, true);
+console.log(cityBungalow);
 
 
 /**** CLASS METHODS ****/
@@ -147,8 +154,25 @@ yellowBellPepper.calculateTotal(5); // 5 peppers
 
 // TODO: What's going in your dinner salad tonight? Create 3-4 more objects, then call 
 // describe() and calculateTotal() for each
+let romaTomato = new Produce("Roma Tomato", "vegetable", "pound", 1.5);
+console.log(romaTomato);
+romaTomato.describe();
+romaTomato.calculateTotal(3);
 
+let whiteDragonfruit = new Produce("White Dragon Fruit", "fruit", "each", 0.5);
+console.log(whiteDragonfruit);
+whiteDragonfruit.describe();
+whiteDragonfruit.calculateTotal(8);
 
+let kale = new Produce("kale", "vegetable", "each", 1.25);
+console.log(kale);
+kale.describe();
+kale.calculateTotal(2);
+
+let greenTomato = new Produce("green tomato", "vegetable", "each", 1.30);
+console.log(greenTomato);
+greenTomato.describe();
+greenTomato.calculateTotal(5);
 
 /**** TIME TO FLY SOLO ****/
 
@@ -160,18 +184,30 @@ yellowBellPepper.calculateTotal(5); // 5 peppers
 	Write a method outside the constructor called describe() that incorporates all three properties into a sentence and prints it to the console. Remember the syntax you must use to reference the properties that are inside the constructor.
 */
 
+class Instrument {
+	constructor(name, category, soundsLike) {
+		this.name = name;
+		this.category = category;
+		this.soundsLike = soundsLike;
+	}
+
+	describe() {
+		console.log(`An instrument, ${this.name}, is from the category ${this.category}, and it sounds like ${this.soundsLike}.`);
+	}
+}
+
 
 
 // TODO: Once your class is complete, un-comment the lines below to test it out.
 
-// let violin = new Instrument("violin", "string", "a whirlwind romance -- and the inevitable heartbreak that follows after");
-// violin.describe();
+let violin = new Instrument("violin", "string", "a whirlwind romance -- and the inevitable heartbreak that follows after");
+violin.describe();
 
-// let tuba = new Instrument("tuba", "brass", "Mr. Snuffleupagus trying to dance");
-// tuba.describe();
+let tuba = new Instrument("tuba", "brass", "Mr. Snuffleupagus trying to dance");
+tuba.describe();
 
-// let ukelele = new Instrument("ukelele", "string", "Barney and the Teletubbies got drunk and filmed a Hawaiian special together");
-// ukelele.describe();
+let ukelele = new Instrument("ukelele", "string", "Barney and the Teletubbies got drunk and filmed a Hawaiian special together");
+ukelele.describe();
 
-// let bagpipe = new Instrument("bagpipe", "woodwind", "200 third-graders had a recorder recital next to a turbojet engine roaring at full throttle");
-// bagpipe.describe();
+let bagpipe = new Instrument("bagpipe", "woodwind", "200 third-graders had a recorder recital next to a turbojet engine roaring at full throttle");
+bagpipe.describe();
