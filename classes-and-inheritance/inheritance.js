@@ -249,7 +249,7 @@ class Milk extends Beverage {
             console.log("This product is non dairy.");
         }
 
-        if (typeof this.flavoring !== 'object') {
+        if (this.flavoring) {
             console.log(`Additional flavoring: ${this.flavoring}`);
         } else {
             console.log(`No additional flavoring.`)
