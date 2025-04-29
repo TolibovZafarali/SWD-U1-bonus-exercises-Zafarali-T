@@ -39,7 +39,10 @@ describe("The bucky object", () => {
     });
 
     // TODO: Write 2 tests for the value of nickname — it should be "Bucky" and NOT "The Winter Soldier"
-
+    test("Nickname should be 'Bucky', not 'Winter soldier' anymore.", () => {
+        expect(examples.bucky.nickname).toEqual('Bucky');
+        expect(examples.bucky.nickname === 'Winter Soldier').toBe(false);
+    });
 
     // Test that triggerWords includes "longing", "daybreak", and "homecoming"
     test("should have an array called 'triggerWords' that includes specific words", () => {
@@ -47,7 +50,9 @@ describe("The bucky object", () => {
         expect(examples.bucky.triggerWords).toContain('daybreak');
         expect(examples.bucky.triggerWords).toContain('homecoming');
         // TODO: Add expectations that check for "rusted", "benign", and "freight car"
-        
+        expect(examples.bucky.triggerWords).toContain('rusted');
+        expect(examples.bucky.triggerWords).toContain('benign');
+        expect(examples.bucky.triggerWords).toContain('freight car');
     });
 
     // Test that the age method returns a number greater than 100 and less than 120
@@ -79,6 +84,12 @@ beforeEach(() => {
         fullName: 'Steve Rogers',
         nickname: 'Cap',
         catchphrases: ['I could do this all day.', 'Language!'],
+        kids: null,
+        height: 75,
+        weapon: {
+            name: "The Shield",
+            madeOf: "vibranium"
+        },
         calculateAge: () => {
             return Math.round((new Date() - new Date(1918, 7, 4)) / examples.MS_PER_YEAR);
         }
@@ -96,7 +107,9 @@ describe('The isAlphaOnly function', () => {
     });
 
     // TODO: Write a test for spaces (is allowed) using data from the test object cap
-
+    test('should return true even if the string has spaces', () => {
+        expect(examples.isAlphaOnly(cap.fullName)).toBe(true);
+    });
 
     // NEGATIVE CASES
 
@@ -107,7 +120,9 @@ describe('The isAlphaOnly function', () => {
     });
 
     // TODO: Write a test for non-alpha characters like punctuation
-
+    test('should return false if the string contains punctuation', () => {
+        expect(examples.isAlphaOnly(cap.catchphrases[1])).toBe(false);
+    });
 
     // EDGE CASES
 
@@ -122,7 +137,13 @@ describe('The isAlphaOnly function', () => {
     });
 
     // TODO: Write a test for non-string types (not allowed)
-    // Use the cap test object to test isAlphaOnly with a number, array, object, function, and null
+    // Use the cap test object to test isAlphaOnly with a number, /array, /object, /function, and /null
     // After seeing the test fail, write code in example.js to handle this condition until they all pass
-
+    test('should return false if the argument is not a string type', () => {
+        expect(examples.isAlphaOnly(cap.height)).toBe(false);
+        expect(examples.isAlphaOnly(cap.calculateAge)).toBe(false);
+        expect(examples.isAlphaOnly(cap.kids)).toBe(false);
+        expect(examples.isAlphaOnly(cap.catchphrases)).toBe(false);
+        expect(examples.isAlphaOnly(cap.weapon)).toBe(false);
+    });
 });
